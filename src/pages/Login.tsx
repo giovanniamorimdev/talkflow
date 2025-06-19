@@ -19,9 +19,10 @@ export function Login() {
     const correctPassword = import.meta.env.VITE_PASSWORD
 
     if (username === correctUsername && password === correctPassword) {
-      toast.success("Login bem-sucedido!")
-      navigate("/")
-    } else {
+        localStorage.setItem("isLoggedIn", "true")
+        toast.success("Login bem-sucedido!")
+        navigate("/", { replace: true })
+      } else {
       setError("Usuário ou senha incorretos.")
       toast.error("Falha no login")
     }
