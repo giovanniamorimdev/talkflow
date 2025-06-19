@@ -26,9 +26,10 @@ export function Header() {
     <header className="flex justify-end items-center p-4 border-b bg-background">
       <DropdownMenu>
         <DropdownMenuTrigger className="focus:outline-none">
-          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white font-bold text-sm">
+        <div
+            className="w-10 h-10 flex items-center justify-center rounded-full font-bold text-sm text-white" style={{ backgroundColor: "rgb(29, 158, 227)" }}>
             {iniciais}
-          </div>
+        </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem onClick={handleLogout}>
