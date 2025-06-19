@@ -10,9 +10,8 @@ import { v4 as uuidv4 } from "uuid";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { Login } from "./pages/Login";
-
-// Componente de rota protegida
 import { ProtectedRoute } from "./components/ProtectedRoute";
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
