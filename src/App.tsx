@@ -6,17 +6,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-// Páginas existentes
+// Páginas
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-
-// Novas páginas
 import { Login } from "./pages/Login";
+
+// Componente de rota protegida
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      gcTime: 1000 * 60 * 60 * 24, // 24 horas
+      gcTime: 1000 * 60 * 60 * 24,
       staleTime: 0,
       queryKeyHashFn: () => uuidv4(),
     },
@@ -36,7 +37,14 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Index />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
