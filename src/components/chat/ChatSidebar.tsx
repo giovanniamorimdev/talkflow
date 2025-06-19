@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { ChatSession } from "@/types/chat";
 import { MessageSquare, PlusCircle, Trash2, Pencil, Check, X, Star, Code } from "lucide-react";
 import { format } from "date-fns";
@@ -93,16 +92,17 @@ export const ChatSidebar = ({
       )}
     >
       <div className="p-4 border-b flex flex-col gap-4">
-        <Button onClick={onNewChat} className="w-full flex items-center gap-2">
-        <img
+      <img
           src={logo}
           alt="Logomarca"
-          className="mb-4 w-32 h-auto object-contain"
+          className="mb-4 h-auto object-contain"
         />
+        <Button onClick={onNewChat} className="w-full flex items-center gap-2">
+        
           <PlusCircle className="w-4 h-4" />
           Nova Conversa
         </Button>
-        <ThemeToggle />
+        
       </div>
       <ScrollArea className="flex-1">
         <div className="p-2 space-y-2">
