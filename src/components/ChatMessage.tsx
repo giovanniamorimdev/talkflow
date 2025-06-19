@@ -75,7 +75,7 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
               <Bot className="w-4 h-4 text-white" />
             </div>
             <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
-              {assistantName}
+              Sintia
             </span>
           </div>
         )}
