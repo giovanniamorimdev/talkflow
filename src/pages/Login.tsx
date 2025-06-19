@@ -20,7 +20,7 @@ export function Login() {
 
     if (username === correctUsername && password === correctPassword) {
       toast.success("Login bem-sucedido!")
-      navigate("/dashboard")
+      navigate("/")
     } else {
       setError("Usuário ou senha incorretos.")
       toast.error("Falha no login")
