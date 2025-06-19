@@ -124,7 +124,7 @@ export const ChatInput = ({
         )}
         <div className="relative">
           <Textarea
-            placeholder="Type a message or paste an image..."
+            placeholder="Digite uma mensagem ou cole uma imagem..."
             value={input}
             onChange={(e) => onInputChange(e.target.value)}
             onKeyDown={handleKeyDown}

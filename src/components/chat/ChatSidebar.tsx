@@ -37,7 +37,7 @@ export const ChatSidebar = ({
 
   const getFirstMessage = (messages: ChatSession["messages"]) => {
     const userMessage = messages.find(m => m.role === "user");
-    return userMessage ? userMessage.content : "New Chat";
+    return userMessage ? userMessage.content : "Nova conversa";
   };
 
   const handleDelete = (e: React.MouseEvent, sessionId: string) => {
@@ -92,17 +92,17 @@ export const ChatSidebar = ({
       )}
     >
       <div className="p-4 border-b flex flex-col gap-4">
-        <Button 
+        {/* <Button 
           onClick={() => navigate('/playground')} 
           className="w-full flex items-center gap-2"
           variant="outline"
         >
           <Code className="w-4 h-4" />
           Code Playground
-        </Button>
+        </Button> */}
         <Button onClick={onNewChat} className="w-full flex items-center gap-2">
           <PlusCircle className="w-4 h-4" />
-          New Chat
+          Nova Conversa
         </Button>
         <ThemeToggle />
       </div>
