@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
+import logo from "@/assets/logo.png"; 
 
 interface ChatSidebarProps {
   sessions: ChatSession[];
@@ -92,15 +93,12 @@ export const ChatSidebar = ({
       )}
     >
       <div className="p-4 border-b flex flex-col gap-4">
-        {/* <Button 
-          onClick={() => navigate('/playground')} 
-          className="w-full flex items-center gap-2"
-          variant="outline"
-        >
-          <Code className="w-4 h-4" />
-          Code Playground
-        </Button> */}
         <Button onClick={onNewChat} className="w-full flex items-center gap-2">
+        <img
+          src={logo}
+          alt="Logomarca"
+          className="mb-4 w-32 h-auto object-contain"
+        />
           <PlusCircle className="w-4 h-4" />
           Nova Conversa
         </Button>
