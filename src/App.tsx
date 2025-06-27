@@ -9,6 +9,10 @@ import Playground from "./pages/Playground";
 import NotFound from "./pages/NotFound";
 import { v4 as uuidv4 } from 'uuid';
 
+// **Import LogtoProvider e tipo de config**
+import { LogtoProvider, LogtoConfig } from '@logto/react';
+import Callback from "./Callback";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -19,6 +23,12 @@ const queryClient = new QueryClient({
   },
 });
 
+// **Configuração Logto (copie do admin console)**
+const config: LogtoConfig = {
+  endpoint: 'https://sintia-logto.bx4zk7.easypanel.host/', // sua URL do Logto
+  appId: 'v8qauxrdvz5m28v6rxffd',                          // seu App ID
+};
+
 const App = () => {
   useEffect(() => {
     const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -26,19 +36,24 @@ const App = () => {
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/playground" element={<Playground />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    // **Envolvendo tudo no LogtoProvider**
+    <LogtoProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/playground" element={<Playground />} />
+              <Route path="*" element={<NotFound />} />
+              {/* IMPORTANTE: criar rota /callback para o Logto */}
+              <Route path="/callback" element={<Callback />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </LogtoProvider>
   );
 };
 
