@@ -48,6 +48,7 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
   };
 
   return (
+    
     <div
       className={cn(
         "flex w-full animate-fade-in transform transition-all duration-300 group",

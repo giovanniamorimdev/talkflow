@@ -7,6 +7,7 @@ import { useState, useCallback } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Menu } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Header } from "@/components/Header"; // Adjust the path as needed
 
 interface ChatLayoutProps {
   sessions: ChatSession[];
@@ -98,6 +99,7 @@ export const ChatLayout = ({
       />
 
       <div className="flex-1 flex flex-col bg-background h-[100dvh] overflow-hidden">
+        <Header />
         {currentSession && (
           <>
             <div className="flex-1 min-h-0">

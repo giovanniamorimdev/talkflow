@@ -4,7 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
-
 import NotFound from "./pages/NotFound";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -12,14 +11,13 @@ import { v4 as uuidv4 } from 'uuid';
 import { LogtoProvider, LogtoConfig } from '@logto/react';
 import Callback from "./Callback";
 import Signin from "./Signin";
-import Home from "./pages/Home";
 import Index from "./pages/Index";
 import ProtectedRoute from "./ProtectedRoute";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      gcTime: 1000 * 60 * 60 * 24, // 24 hours
+      gcTime: 1000 * 60 * 60 * 24,
       staleTime: 0,
       queryKeyHashFn: () => uuidv4(),
     },
