@@ -1,5 +1,4 @@
-import { useNavigate } from "react-router-dom";
-import { useLogto } from '@logto/react'; // Hook do Logto
+import { useLogto } from '@logto/react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,12 +17,15 @@ const iniciais = nomeCompleto
   .toUpperCase();
 
 export function Header() {
-  const navigate = useNavigate();
-  const { signOut } = useLogto(); // Hook do Logto para logout
+  const { signOut } = useLogto(); // Hook do Logto
 
-const handleLogout = () => {
-  signOut(import.meta.env.VITE_LOGOUT_REDIRECT_URI || '/signin');
-};
+  const handleLogout = () => {
+    // ✅ Use apenas a string do redirect URI
+    const postLogoutRedirectUri = import.meta.env.VITE_LOGOUT_REDIRECT_URI as string || '/signin';
+
+    // 🔐 Chama o logout do Logto com o redirect correto
+    signOut(postLogoutRedirectUri);
+  };
 
   return (
     <header className="flex justify-between items-center p-4 border-b bg-background">
