@@ -46,7 +46,7 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route element={<ProtectedRoute />}>
-                <Route path="/" element={<Index />} />
+                <Route path="/home" element={<Index />} />
               </Route>
               <Route path="/signin" element={<Signin />} />
               <Route path="*" element={<NotFound />} />
