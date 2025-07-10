@@ -2,7 +2,7 @@ import { useLogto } from '@logto/react';
 import { useChatSessions } from '@/hooks/useChatSessions';
 import { ChatLayout } from '@/components/chat/ChatLayout';
 
-const Index = () => {
+const Signin = () => {
   const { isAuthenticated, signIn } = useLogto();
 
   // Se não estiver logado, exibe botão para login e não renderiza o chat
@@ -52,4 +52,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Signin;

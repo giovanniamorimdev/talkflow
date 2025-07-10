@@ -4,14 +4,14 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
-import Index from "./pages/Index";
-import Playground from "./pages/Playground";
+
 import NotFound from "./pages/NotFound";
 import { v4 as uuidv4 } from 'uuid';
 
 // **Import LogtoProvider e tipo de config**
 import { LogtoProvider, LogtoConfig } from '@logto/react';
 import Callback from "./Callback";
+import Signin from "./Signin";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -44,10 +44,8 @@ const App = () => {
           <Sonner />
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/playground" element={<Playground />} />
+              <Route path="/" element={<Signin />} />
               <Route path="*" element={<NotFound />} />
-              {/* IMPORTANTE: criar rota /callback para o Logto */}
               <Route path="/callback" element={<Callback />} />
             </Routes>
           </BrowserRouter>
