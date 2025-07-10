@@ -1,56 +1,16 @@
 import { useLogto } from '@logto/react';
-import { useEffect } from 'react';
-import { useChatSessions } from '@/hooks/useChatSessions';
-import { ChatLayout } from '@/components/chat/ChatLayout';
 
-const Signin = () => {
-  const { isAuthenticated, signIn } = useLogto();
+export default function Signin() {
+  const { signIn } = useLogto();
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      signIn({ redirectUri: 'https://administrativo.sintia.app.br/callback' });
-    }
-  }, [isAuthenticated, signIn]);
-
-  // Enquanto está redirecionando, pode mostrar um loading
-  if (!isAuthenticated) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen">
-        <p>Redirecionando para login...</p>
-      </div>
-    );
-  }
-
-  // Se estiver autenticado, renderiza o chat normalmente
-  const {
-    sessions,
-    currentSessionId,
-    isLoading,
-    isTyping,
-    createNewSession,
-    deleteSession,
-    renameSession,
-    sendMessage,
-    setCurrentSessionId,
-    toggleFavorite,
-  } = useChatSessions();
+  const handleLogin = () => {
+    const redirectUri = import.meta.env.VITE_REDIRECT_URI;
+    signIn({ redirectUri });
+  };
 
   return (
-    <div className="relative">
-      <ChatLayout
-        sessions={sessions}
-        currentSessionId={currentSessionId}
-        isLoading={isLoading}
-        isTyping={isTyping}
-        onNewChat={createNewSession}
-        onSessionSelect={setCurrentSessionId}
-        onDeleteSession={deleteSession}
-        onRenameSession={renameSession}
-        onToggleFavorite={toggleFavorite}
-        onSendMessage={sendMessage}
-      />
-    </div>
+    <button onClick={handleLogin}>
+      Entrar com Logto
+    </button>
   );
-};
-
-export default Signin;
+}

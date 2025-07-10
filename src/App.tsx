@@ -12,6 +12,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { LogtoProvider, LogtoConfig } from '@logto/react';
 import Callback from "./Callback";
 import Signin from "./Signin";
+import Home from "./pages/Home";
+import Index from "./pages/Index";
+import ProtectedRoute from "./ProtectedRoute";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,8 +28,8 @@ const queryClient = new QueryClient({
 
 // **Configuração Logto (copie do admin console)**
 const config: LogtoConfig = {
-  endpoint: 'https://sintia-logto.bx4zk7.easypanel.host/', // sua URL do Logto
-  appId: 'v8qauxrdvz5m28v6rxffd',                          // seu App ID
+  endpoint: import.meta.env.VITE_LOGTO_ENDPOINT,
+  appId: import.meta.env.VITE_LOGTO_APP_ID,
 };
 
 const App = () => {
@@ -44,7 +47,10 @@ const App = () => {
           <Sonner />
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Signin />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="/" element={<Index />} />
+              </Route>
+              <Route path="/signin" element={<Signin />} />
               <Route path="*" element={<NotFound />} />
               <Route path="/callback" element={<Callback />} />
             </Routes>
