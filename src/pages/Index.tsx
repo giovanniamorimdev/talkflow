@@ -11,7 +11,7 @@ const Index = () => {
       <div className="flex flex-col items-center justify-center min-h-screen">
         <h2>Você precisa entrar para acessar o chat.</h2>
         <button
-          onClick={() => signIn({ redirectUri: 'https://administrativo.sintia.app.br/' })}
+          onClick={() => signIn({ redirectUri: 'https://administrativo.sintia.app.br/callback' })}
           className="mt-4 px-4 py-2 bg-blue-600 text-white rounded"
         >
           Entrar
