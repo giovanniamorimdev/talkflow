@@ -8,7 +8,7 @@ export default function Callback() {
 
   useEffect(() => {
     if (!isLoading && !error) {
-      navigate('/home');
+      navigate('/');
     }
   }, [isLoading, error, navigate]);
 

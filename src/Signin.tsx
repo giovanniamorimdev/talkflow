@@ -10,7 +10,7 @@ export default function Signin() {
 
   return (
     <button onClick={handleLogin}>
-      Entrar com Logto
+      Entrar com Logto V2
     </button>
   );
 }
