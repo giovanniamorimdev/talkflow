@@ -9,7 +9,7 @@ export default function Signin() {
   useEffect(() => {
     if (isAuthenticated) {
       // Redireciona para a home se já estiver autenticado
-      navigate('/home');
+      navigate('/');
     }
   }, [isAuthenticated, navigate]);
 
@@ -25,8 +25,9 @@ export default function Signin() {
         onClick={handleSignIn}
         className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
       >
-        Entrar com Logto V6.0.1
+        Entrar com Logto V6.0.2
       </button>
     </div>
   );
+  
 }
