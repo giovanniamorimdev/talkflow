@@ -8,7 +8,8 @@ import { toast } from "sonner";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
-import logo from "@/assets/logo.png"; 
+import logo from "@/assets/logo.png";
+ 
 
 interface ChatSidebarProps {
   sessions: ChatSession[];
@@ -45,23 +46,23 @@ export const ChatSidebar = ({
     const session = sessions.find(s => s.id === sessionId);
     
     if (session?.favorite) {
-      toast.error("Cannot delete a favorite chat");
+      toast.error("Não é possível excluir um chat favorito");
       return;
     }
     
     if (sessions.length === 1) {
-      toast.error("Cannot delete the last chat session");
+      toast.error("Não é possível excluir a última conversa");
       return;
     }
     onDeleteSession(sessionId);
-    toast.success("Chat deleted successfully");
+    toast.success("Chat excluído com sucesso");
   };
 
   const handleToggleFavorite = (e: React.MouseEvent, sessionId: string) => {
     e.stopPropagation();
     onToggleFavorite(sessionId);
     const session = sessions.find(s => s.id === sessionId);
-    toast.success(session?.favorite ? "Chat removed from favorites" : "Chat added to favorites");
+    toast.success(session?.favorite ? "Chat removido dos favoritos" : "Chat adicionado aos favoritos");
   };
 
   const startEditing = (e: React.MouseEvent, session: ChatSession) => {
@@ -75,7 +76,7 @@ export const ChatSidebar = ({
     if (editingSessionId && editingName.trim()) {
       onRenameSession(editingSessionId, editingName.trim());
       setEditingSessionId(null);
-      toast.success("Chat renamed successfully");
+      toast.success("Chat renomeado com sucesso");
     }
   };
 
