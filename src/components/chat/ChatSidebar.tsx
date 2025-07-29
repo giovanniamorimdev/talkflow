@@ -13,6 +13,7 @@ import sintiaIconDark from "@/assets/logo-dark.png";
 
 // Simple dark mode detection using matchMedia
 const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+console.log("Dark mode detected:", isDarkMode);
 
 
 interface ChatSidebarProps {

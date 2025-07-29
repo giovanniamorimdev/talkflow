@@ -34,7 +34,7 @@ export function Header() {
         <DropdownMenuTrigger className="focus:outline-none">
           <div
             className="w-10 h-10 flex items-center justify-center rounded-full font-bold text-sm text-white"
-            style={{ backgroundColor: "rgb(29, 158, 227)" }}
+            style={{ backgroundColor: "#1b3e6e" }}
           >
             {iniciais}
           </div>
