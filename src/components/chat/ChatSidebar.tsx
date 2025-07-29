@@ -11,8 +11,10 @@ import { useNavigate } from "react-router-dom";
 import sintiaIconLight from "@/assets/logo-light.png";
 import sintiaIconDark from "@/assets/logo-dark.png";
 
+
 // Simple dark mode detection using matchMedia
-const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const isDarkMode = typeof document !== 'undefined' &&
+                   document.documentElement.classList.contains('dark');
 console.log("Dark mode detected:", isDarkMode);
 
 

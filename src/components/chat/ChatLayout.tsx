@@ -46,7 +46,7 @@ export const ChatLayout = ({
     
     if (!input.trim() && !file) {
       toast({
-        description: "Please enter a message or attach an image",
+        description: "Por favor, digite uma mensagem ou selecione um arquivo para enviar.",
         variant: "destructive",
       });
       return false;
@@ -58,8 +58,9 @@ export const ChatLayout = ({
       return true;
     } catch (error) {
       toast({
-        description: "Failed to send message",
+        description: "Falha ao enviar mensagem",
         variant: "destructive",
+        
       });
       return false;
     }
