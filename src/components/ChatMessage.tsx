@@ -6,6 +6,7 @@ import { Button } from './ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { format } from 'date-fns';
 import { MarkdownRenderer } from './chat/MarkdownRenderer';
+import sintiaIcon from '@/assets/sintia-icon.png';
 import {
   Dialog,
   DialogContent,
@@ -34,13 +35,13 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
       await navigator.clipboard.writeText(cleanText);
       
       toast({
-        description: "Message copied to clipboard",
+        description: "Mensagem copiada para a área de transferência",
         duration: 2000,
       });
     } catch (err) {
-      console.error('Failed to copy text:', err);
+      console.error('Falha ao copiar texto:', err);
       toast({
-        description: "Failed to copy text",
+        description: "Falha ao copiar texto",
         variant: "destructive",
         duration: 2000,
       });
@@ -73,7 +74,12 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
         {isAssistant && (
           <div className="flex items-center gap-2 mb-2">
             <div className="flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500">
-              <Bot className="w-4 h-4 text-white" />
+              <img
+              src={sintiaIcon}
+              alt="Sintia"
+              className="w-6 h-6 rounded-full object-cover"
+            />
+
             </div>
             <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
               Sintia
