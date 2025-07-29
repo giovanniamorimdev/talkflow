@@ -51,9 +51,9 @@ export const ChatInput = ({
         }
       }
     } catch (err) {
-      console.error('Failed to send message:', err);
+      console.error('Falha ao enviar mensagem:', err);
       toast({
-        description: "Failed to send message",
+        description: "Falha ao enviar mensagem",
         variant: "destructive",
       });
     }
@@ -73,7 +73,7 @@ export const ChatInput = ({
 
       if (file.size > 5 * 1024 * 1024) {
         toast({
-          description: "Image must be less than 5MB",
+          description: "A imagem deve ter menos de 5MB",
           variant: "destructive",
         });
         return;

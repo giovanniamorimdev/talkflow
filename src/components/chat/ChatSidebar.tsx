@@ -8,8 +8,12 @@ import { toast } from "sonner";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
-import logo from "@/assets/logo.png";
- 
+import sintiaIconLight from "@/assets/logo-light.png";
+import sintiaIconDark from "@/assets/logo-dark.png";
+
+// Simple dark mode detection using matchMedia
+const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
 
 interface ChatSidebarProps {
   sessions: ChatSession[];
@@ -94,7 +98,7 @@ export const ChatSidebar = ({
     >
       <div className="p-4 border-b flex flex-col gap-4">
       <img
-          src={logo}
+          src={isDarkMode ? sintiaIconDark : sintiaIconLight}
           alt="Logomarca"
           className="mb-4 h-auto object-contain"
         />
