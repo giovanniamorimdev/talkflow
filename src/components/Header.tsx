@@ -1,4 +1,3 @@
-import { useLogto } from '@logto/react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,8 +5,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useNavigate } from "react-router-dom";
 
-// Nome temporário (opcional, pode vir do token depois)
+// Nome temporário (opcional)
 const nomeCompleto = import.meta.env.VITE_NOME || "Usuário";
 const iniciais = nomeCompleto
   .split(" ")
@@ -17,14 +17,15 @@ const iniciais = nomeCompleto
   .toUpperCase();
 
 export function Header() {
-  const { signOut } = useLogto(); // Hook do Logto
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    // ✅ Use apenas a string do redirect URI
-    const postLogoutRedirectUri = import.meta.env.VITE_LOGOUT_REDIRECT_URI as string || '/signin';
+    // Se tiver algo para limpar (ex.: tokens no localStorage), faça aqui:
+    // localStorage.removeItem("token");
+    // sessionStorage.clear();
 
-    // 🔐 Chama o logout do Logto com o redirect correto
-    signOut(postLogoutRedirectUri);
+    // Redireciona para a tela inicial ou de login (ajuste conforme sua necessidade)
+    navigate("/"); 
   };
 
   return (

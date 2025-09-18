@@ -5,14 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import NotFound from "./pages/NotFound";
-import { v4 as uuidv4 } from 'uuid';
-
-// **Import LogtoProvider e tipo de config**
-import { LogtoProvider, LogtoConfig } from '@logto/react';
-import Callback from "./Callback";
-import Signin from "./Signin";
+import { v4 as uuidv4 } from "uuid";
 import Index from "./pages/Index";
-import ProtectedRoute from "./ProtectedRoute";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,12 +18,6 @@ const queryClient = new QueryClient({
   },
 });
 
-// **Configuração Logto (copie do admin console)**
-const config: LogtoConfig = {
-  endpoint: import.meta.env.VITE_LOGTO_ENDPOINT,
-  appId: import.meta.env.VITE_LOGTO_APP_ID,
-};
-
 const App = () => {
   useEffect(() => {
     const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -37,26 +25,19 @@ const App = () => {
   }, []);
 
   return (
-    // **Envolvendo tudo no LogtoProvider**
-    <LogtoProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route element={<ProtectedRoute />}>
-                <Route path="/" element={<Index />} />
-                <Route path="/home" element={<Index />} />
-              </Route>
-              <Route path="/signin" element={<Signin />} />
-              <Route path="*" element={<NotFound />} />
-              <Route path="/callback" element={<Callback />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </QueryClientProvider>
-    </LogtoProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/home" element={<Index />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
   );
 };
 
